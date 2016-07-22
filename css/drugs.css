@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+/* ---- Global ---- */
+html, body { margin:0;}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  text-shadow: none;
+}
+body, input, select, textarea, button, .ui-btn { font-size: 1.125em; line-height: 1.375em; font-family: 'Lato', sans-serif; font-weight: 400 !important;}
+img { width:auto\9; height:auto; max-width:100%; vertical-align:middle; border:0; -ms-interpolation-mode:bicubic;}
+p { font-weight: 300; line-height:1.375em;}
+
+
+/* ---- Nav ---- */
+ul.navMenu { list-style: none; position: fixed; top:0; left:0; right:0; bottom:0; margin: 0; padding: 0; width: 60%; height: 100%; background: #111; z-index:0;}
+ul.navMenu li { display:block; width:100%; border-bottom:1px solid #444;}
+ul.navMenu li:hover { background:#232323;}
+ul.navMenu li a { display:block; width:100%; padding:0 0 0 2.5em; line-height:3.125em; color:#FFF; text-decoration:none; background:url('../img/ico_arrow.png') no-repeat .5em center;}
+
+ul.navMenu li a.login { background:url('../img/ico_login.png') no-repeat .5em center;}
+ul.navMenu li a.home { background:url('../img/ico_home.png') no-repeat .5em center;}
+ul.navMenu li a.reg { background:url('../img/ico_reg.png') no-repeat .5em center;}
+
+
+.site-wrap { min-width: 100%; min-height: 100%; position: relative; top: 0; /*bottom: 100%;*/left: 0; z-index: 1;/*padding: 4em;*/}
+
+.nav-trigger { position: absolute; clip: rect(0, 0, 0, 0);}
+label[for="nav-trigger"] { position: fixed; top: 0px; left: 0px; z-index: 9999; width: 50px; height: 50px; cursor: pointer; background: url('../img/nav.png');}
+.nav-trigger:checked + label { position:absolute; left: 60%;}
+.nav-trigger:checked ~ .site-wrap { left: 60%; box-shadow: 0 0 30px 30px rgba(0,0,0,0.3);}
+.nav-trigger + label, .site-wrap { transition: left 0.2s;}
+
+
+
+.footer { position:relative; display:block; width:100%; margin:1em 0 0; padding:.875em 1em 1em; font-size:.875em; line-height:3em; text-align:center; color:#333; border-top:1px solid #AAA;}
+.footer > h4 { margin:0;}
+
+
+
+/* ---- FAQ ---- */
+dl.accordion { margin:0; padding:0; display:block;}
+dl.accordion dt { margin:0 0 .125em; padding:.7em 1em; display:block; background:#666;}
+dl.accordion dt:hover { background:#333;}
+dl.accordion dt a { margin:0; padding:0; display:block; color:#FFF !important; text-decoration:none; line-height:1.5em;}
+dl.accordion dd { margin:0; padding:1em; display:block;}
+
+
+/* ---- Message Board ---- */
+#ok { position:fixed; top:50%; left:50%; display:none; margin:-50px 0 0 -150px; width:300px; height:100px; color:#FFF; text-align:center; background:rgba(0, 0, 0, .7); border-radius:.5em; z-index:9999;}
+.error { display:inline-block !important; font-size:1.125em; color:red;}
+.error.nomargin { margin:0 !important; }
+.required { color:red;}
+h4.formitem { margin:1em 0 0; font-size:1em;}
+
+h3 { margin:1em 0 .5em;}
+.msg-desp { display:inline-block; padding:0 1em 0 0; font-size:1em; color:#888;}
+.msg-line { margin:0; padding:1em 0 1.5em; border-bottom:1px solid #AAA;}
+.msg-user { display:inline-block; padding:0 1em 0 0; font-size:1em; font-weight:500; color:#347cb9;}
+
+
+.btn-login { position:absolute; right:0; top:0; display:block; margin:0; padding:0; width:50px; height:50px; background:url('../img/login.png') no-repeat center center; overflow:hidden; text-indent:-999px;}
+
+
+
+/* ---- Buttons ---- */
+.btn { display:block; margin:1em 0; padding:0; width:100%; font-size:1.125em; font-weight:bold; line-height:2.5em; color:#FFF !important; text-decoration:none; border:none; -webkit-font-smoothing:antialiased; text-align:center; -moz-border-radius:0.3125em; -webkit-border-radius:0.3125em; border-radius:0.3125em;}
+
+.btn.submit { background:#4b92cf;}
+.btn.submit:hover { background:#347cb9;}
+.btn.register { background:#888;}
+.btn.register:hover { background:#666;}
+.btn.del { background:#a21e22;}
+.btn.del:hover { background:#8d080c;}
+
+
+.btn.add { float:left; width:48%; background:#39b54a;}
+.btn.add:hover { background:#259a35;}
+.btn.edit { float:right; width:48%; background:#666;}
+.btn.edit:hover { background:#444;}
+
+
+#back-top { display:block; position:fixed; z-index:999; bottom:30px; right:30px; width:40px; height:40px; background:url('../img/top.png') no-repeat; text-indent:100%; white-space:nowrap; overflow:hidden;}
+
+
+
+/* ---- Override JQuery Mobile Default CSS ---- */
+.ui-header > .ui-btn, .ui-header > .ui-btn:active, .ui-header > .ui-btn:hover { border:none; background-color:transparent; color:#FFF; text-indent:-9999px; overflow:hidden;}
+
+.header > .ui-btn, .header > .ui-btn:active, .header > .ui-btn:hover { border:none; background-color:transparent; color:#FFF; text-indent:-9999px; overflow:hidden; box-shadow: none; top:0; margin:0; padding:0; width:2em; height:2.5em;}
+
+.ui-bar-a,
+.ui-page-theme-a .ui-bar-inherit,
+html .ui-bar-a .ui-bar-inherit,
+html .ui-body-a .ui-bar-inherit,
+html body .ui-group-theme-a .ui-bar-inherit {
+	position:fixed;
+	width:100%;
+	background-color:#333 /*{a-bar-background-color}*/;
+	border-color:none /*{a-bar-border}*/;
+	color:#FFF /*{a-bar-color}*/;
+	text-shadow: none;
+	font-weight: bold;
+	border:none;
+	z-index:999;
+}
+
+
+
+
+.ui-header .ui-title, .ui-footer .ui-title { margin:0 20%; font-size:1.125em;}
+.ui-btn-left, .ui-btn-right { top:.5em;}
+
+.ui-content {
+	background: url('../img/cloud.jpg') no-repeat center center;
+	background-size: cover;
+	min-height:20em;
+	padding:3.5em 1.125em 0;
+	
+}
+.ui-content .ui-listview,
+.ui-panel-inner > .ui-listview {
+	margin: .5em 0;
+}
+
+.ui-listview > li > a.ui-btn {
+	border: 1px solid #EEE;
+	background-color: rgba(255, 255, 255, .5);
+	color:#333;
+	text-shadow: none;
+}
+
+.ui-listview > li {
+	margin:0 0 .5em;
+}
+
+
+
+
+.header { 
+	position:fixed;
+	width:100%;
+	background-color:#222;
+	border-color:none;
+	color:#FFF;
+	text-shadow: none;
+	font-weight: bold;
+	border:none;
+	z-index:999;
+	font-size:1em;
+	text-align:center;
+}
+.header > h1 { 
+	font-size:1.125em;
+	text-align:center;
+	line-height:2.5em;
+	padding:0;
+	margin:0 20%;
+}
