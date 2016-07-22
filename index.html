@@ -1,0 +1,112 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fight Against Drugs</title>
+    
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/drugs.css" />
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/function.js"></script>
+
+    <!-- Jquery form validation -->
+	<script src="js/jquery.validate.min.js"></script>
+
+    <!-- Home Slider -->
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <script src="js/jquery.flexslider-min.js"></script>
+    
+    </head> 
+<body> 
+
+
+<div data-role="page" id="home" class="site-wrap">
+	<div class="header">
+		<h1>Fight Against Drugs</h1>
+        <a href="login" class="btn-login" rel="external">Login</a>
+	</div>
+    
+    <div class="flexslider" style="width:100%">
+        <ul class="slides">
+            <li><img src="img/drugs.jpg" alt="" /></li>
+            <li><img src="img/pills.jpg" alt="" /></li>
+            <li><img src="img/addict.jpg" alt="" /></li>
+        </ul>
+    </div>        
+        
+	<div data-role="content">
+        
+		<ul data-role="listview">
+			<li><a href="about" rel="external">About Drug Abuse</a></li>
+            <li><a href="faq" rel="external">FAQ on Drugs</a></li>
+            <li><a href="media" rel="external">Media</a></li>
+			<li><a href="message-board" rel="external">Message Board</a></li>
+			<li><a href="counselling-centres" rel="external">Counselling Centres</a></li>
+		</ul>	
+        
+        <div class="footer">
+            <h4>&copy; Fight Against Drugs</h4>
+        </div>
+	</div>
+</div>
+
+
+<script>
+$(document).on("pageinit","#form", function() {
+
+	//==============GET===============
+	$("#login").on('click',function() {
+		var username=$("#username").val();
+		var password=$("#password").val();
+
+		// form validation
+		$("#loginform").validate({
+			submitHandler : function () {
+				// if validate success
+
+                $.ajax({
+                    url:"user-login",
+                    type:"GET",
+                    dataType:"json",
+                    data:{type:"userlogin",username:username, password:password},
+					success : function (data) {
+						// redirect to home if restration success
+						window.location = "home";
+						alert("Login Successful");
+					},
+                    error: function(err){
+						window.location = "login";
+                        alert("Wrong Username or Password");
+                    }
+                });
+		
+			}
+		});
+
+	   
+	});
+
+
+	   
+});
+
+
+
+	// init Home Slider
+	$(window).load(function() {
+		$('.flexslider').flexslider({
+			directionNav: false,
+			animation: "slide"
+		});
+	});
+</script>
+</body>
+</html>

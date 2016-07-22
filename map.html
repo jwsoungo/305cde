@@ -1,0 +1,99 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fight Against Drugs</title>
+    
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/drugs.css" />
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/function.js"></script>
+
+    </head> 
+<body> 
+
+<!-- Call Menu -->
+<div id="nav"></div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div data-role="page" class="site-wrap">
+	<div class="header">
+        <a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a>
+		<h1>Counselling Centres</h1>
+	</div>
+	<div data-role="content" id="map" style="min-height:37.5em">	
+    
+		<!-- Google Map-->
+		<script>
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: {lat: 22.319569, lng: 114.169072}, 
+          });
+        
+          setMarkers(map);
+        }
+        // Set Locations
+        var locations = [
+          ['<h3>Mong Kok</h3>3/F, Public Health Laboratory Centre, 382 Nam Cheong Street, Kowloon', 22.339494, 114.166352, 3],
+          ['<h3>Sham Shui Po</h3>Rm 11-16 Nam Yiu House, Nam Shan Estate, Shamshuipo, Kowloon', 22.334131, 114.170651, 2],
+          ['<h3>Tsim Sha Tsui</h3>G/F, 33, Granville Road, Tsimshatsui, Kowloon', 22.300214, 114.174160, 1]
+        ];
+        
+		// Set custom marker image
+        function setMarkers(map) {
+          var image = {
+            url: 'img/pin.png',
+            size: new google.maps.Size(80, 80),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(40, 80)
+          };
+          var shape = {
+            coords: [1, 1, 1, 80, 88, 80, 88, 1],
+            type: 'poly'
+          };
+		  
+		  var infowindow = new google.maps.InfoWindow();
+
+          for (var i = 0; i < locations.length; i++) {
+            var beach = locations[i];
+            var marker = new google.maps.Marker({
+              position: {lat: beach[1], lng: beach[2]},
+              map: map,
+              icon: image,
+              shape: shape,
+              title: beach[0],
+              zIndex: beach[3]
+            });
+
+
+			// Set click event info window
+			(function(marker, i) {
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(locations[i][0]);
+					infowindow.open(map, marker);
+				});
+			})(marker, i);
+
+			
+          }
+        }
+        
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvNQwMANskj3mcn3qIojc4WHBsqde_bNE&signed_in=true&callback=initMap"></script>
+
+	</div>
+</div>
+
+</body>
+</html>

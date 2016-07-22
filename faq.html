@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fight Against Drugs</title>
+    
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/drugs.css" />
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/function.js"></script>
+    
+    
+    </head> 
+<body> 
+
+<!-- Call Menu -->
+<div id="nav"></div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div data-role="page" id="faq" class="site-wrap">
+	<div class="header">
+        <a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a>
+		<h1>FAQ on Drugs</h1>
+        <a href="login" class="btn-login" rel="external">Login</a>
+
+	</div>
+	<div data-role="content">	
+    	<h2>Useful Information</h2>
+
+        <dl class="accordion">
+        
+            <dt><a href="javascript:void(0)">What are the consequences of abusing drugs?</a></dt>
+            <dd>Each drug has its own potential risks, and the risks can be potentiated by impurities or adulterants, and the unique reaction of each individual user. Drugs offered in the illicit market are not always what they are claimed to be. The buyer can rarely be sure of the content or the strength of the substance. If illicitly manufactured, the substances are likely to contain impurities or adulterants. It is also noteworthy that taking drugs with alcohol is even more dangerous and can be fatal.</dd>
+            
+            <dt><a href="javascript:void(0)">What will happen if taking more than one kind of drug at a time?</a></dt>
+            <dd>Taking more than one drug all at a time is extremely dangerous because even small doses of each may prove fatal. Complex interactions can occur among various types of drugs and increase the risk of a harmful or fatal outcome.</dd>
+            
+            <dt><a href="javascript:void(0)">Is it true that it is less harmful to abuse psychotropic substances?</a></dt>
+            <dd>Absolutely NOT! Frequent use of psychotropic substances in high doses and for a long time is likely to distort an individual's perception of and response to environment. Even in moderate doses, most psychotropic substances impair motor control, reaction time, and the ability to maintain attention. Drug users are likely to be a hazard to themselves and to others when operating machinery or a motor vehicle, or crossing roads, etc.</dd>
+            
+            <dt><a href="javascript:void(0)">Can drug abuse make you happy?</a></dt>
+            <dd>No! Many drugs amplify mood, so if someone is angry, anxious, or depressed, drugs could make that person feel even worse. Even drugs that are thought to have a calming effect (like alcohol and tranquillizers) can release aggressive impulses. They can also weaken one's social and personal inhibitions, causing one to act in a manner he will later regret. Violence causing serious injuries or deaths to the abusers or others, sexual offences and date rape are often involved with the taking of drugs.</dd>
+            
+            <dt><a href="javascript:void(0)">Are drugs addictive?</a></dt>
+            <dd>Yes! Drugs not only alter behaviour, but also create physical and psychological dependence to varying degrees. Physical dependence causes withdrawal symptoms when the drug is discontinued. Psychological dependence causes a craving for the drug to ease the abuser's mind. Tolerance to drugs frequently develops so that higher doses are required to satisfy the craving or suppress the withdrawal symptoms. As a user becomes drug-dependent, he needs a constant supply of cash, and may resort to serious crimes to support his habit. Some may eventually die of overdose.</dd>
+        </dl>
+		<script>
+			(function($) {
+				
+			  var allPanels = $('.accordion > dd').hide();
+				
+			  $('.accordion > dt > a').click(function() {
+					allPanels.slideUp();
+					$(this).parent().next().slideDown(150);
+					return false;
+			  });
+			
+			})(jQuery);
+        </script>
+
+        <a href="javascript:void(0)" id="back-top">Top</a>
+        <div class="footer">
+            <h4>&copy; Fight Against Drugs</h4>
+        </div>
+        
+	</div>
+</div>
+
+</body>
+</html>

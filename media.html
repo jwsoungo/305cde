@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fight Against Drugs</title>
+    
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/drugs.css" />
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/function.js"></script>
+    
+    
+    </head> 
+<body> 
+
+<!-- Call Menu -->
+<div id="nav"></div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div data-role="page" id="faq" class="site-wrap">
+	<div class="header">
+        <a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a>
+		<h1>Media</h1>
+        <a href="login" class="btn-login" rel="external">Login</a>
+
+	</div>
+	<div data-role="content">	
+    
+    	<h2>Anti-drug Video Clips</h2>
+		<div id="player"></div>
+
+
+		<script>
+              // 2. This code loads the IFrame Player API code asynchronously.
+              var tag = document.createElement('script');
+        
+              tag.src = "https://www.youtube.com/iframe_api";
+              var firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+              // 3. This function creates an <iframe> (and YouTube player)
+              //    after the API code downloads.
+              var player;
+              function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                  height: '320',
+                  width: '100%',
+                  videoId: 'Ci35L4_1j9c',
+                  events: {
+                    //'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                  }
+                });
+              }
+        
+              // 4. The API will call this function when the video player is ready.
+              function onPlayerReady(event) {
+                event.target.playVideo();
+              }
+        
+              // 5. The API calls this function when the player's state changes.
+              //    The function indicates that when playing a video (state=1),
+              //    the player should play for six seconds and then stop.
+              var done = false;
+              function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.PLAYING && !done) {
+                  setTimeout(stopVideo, 6000);
+                  done = true;
+                }
+              }
+              function stopVideo() {
+                player.stopVideo();
+              }
+        </script>
+    
+    
+    	<h2>Useful Links</h2>
+
+		<ul data-role="listview">
+			<li><a href="http://www.sb.gov.hk/" rel="external">Security Bureau</a></li>
+			<li><a href="http://www.edb.gov.hk/" rel="external">Education Bureau</a></li>
+			<li><a href="http://www.csd.gov.hk/" rel="external">Correctional Services Department</a></li>
+			<li><a href="http://www.customs.gov.hk/" rel="external">Customs and Excise Department</a></li>
+			<li><a href="http://www.govtlab.gov.hk/" rel="external">Government Laboratory</a></li>
+			<li><a href="http://www.dh.gov.hk/" rel="external">Department of Health</a></li>
+			<li><a href="http://www.police.gov.hk/index.html" rel="external">Hong Kong Police Force</a></li>
+			<li><a href="http://www.swd.gov.hk/" rel="external">Social Welfare Department</a></li>
+		</ul>	
+        
+        
+        <a href="javascript:void(0)" id="back-top">Top</a>
+        <div class="footer">
+            <h4>&copy; Fight Against Drugs</h4>
+        </div>
+        
+	</div>
+</div>
+
+</body>
+</html>

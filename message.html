@@ -1,0 +1,138 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fight Against Drugs</title>
+    
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/drugs.css" />
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/function.js"></script>
+
+    <!-- Jquery form validation -->
+	<script src="js/jquery.validate.min.js"></script>
+    
+    </head> 
+<body> 
+
+<!-- Call Menu -->
+<div id="nav"></div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div data-role="page" id="board" class="site-wrap">
+	<div class="header">
+        <a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a>
+		<h1>Message Borad</h1>
+	</div>
+    
+	<div data-role="content" style="min-height:40em;">	
+    
+    <h2>Welcome</h2>
+    
+    <a href="#addnew" class="btn add" data-ajax="false">+ New Message</a>
+    <a href="edit" class="btn edit" data-ajax="false">Edit Message</a>
+    
+    <div id="messageBoard"></div>
+
+        <a name="addnew"></a>
+    <h2>Add New Message</h2>
+		<form name="contactform" id="contactform" enctype="multipart/form-data">
+        
+            <h4 class="formitem"><span class="required">*</span> Username <label for="username" generated="true" class="error nomargin"></label></h4>
+            <input type="text" id="username" name="username" required />
+            <h4 class="formitem"><span class="required">*</span> Subject <label for="subject" generated="true" class="error nomargin"></label></h4>
+            <input type="text" id="subject" name="subject" required />
+            <h4 class="formitem"><span class="required">*</span> Date <label for="date" generated="true" class="error nomargin"></label></h4>
+            <input type="date" id="date" name="date" required />
+            <h4 class="formitem"><span class="required">*</span> Email <label for="email" generated="true" class="error nomargin"></label></h4>
+            <input type="email" id="email" name="email" required />
+            <h4 class="formitem"><span class="required">*</span> Message <label for="message" generated="true" class="error nomargin"></label></h4>
+            <textarea type="text" id="message" name="message" rows="4" required /></textarea>
+            
+            <button id="submit" class="btn submit" type="submit" value="Submit Post">Submit Post</button>
+		</form> 
+
+        <a href="javascript:void(0)" id="back-top">Top</a>
+        <div class="footer">
+            <h4>&copy; Fight Against Drugs</h4>
+        </div>
+    </div>
+</div>
+
+<div id="ok"></div>
+
+
+<script>
+$(document).ready(function() {
+	//==============POST===============
+	$("#submit").on('click',function() {
+	
+		var username=$("#username").val();
+		var subject=$("#subject").val();
+		var date=$("#date").val();
+		var email=$("#email").val();
+		var message=$("#message").val();
+		
+		var myData = 'username='+username+'&subject='+subject+'&date='+date+'&email='+email+'&message='+message;
+	
+		$("#contactform").validate({
+			submitHandler : function () {
+				// if validate success
+				$.ajax({
+					url:'msg-edit',
+					type:"POST",
+					dataType : 'text',
+					data:myData,
+					success : function (data) {
+						alert("This message has been posted successfully");
+						setTimeout(function(){
+							location.reload(); // then reload the page
+						}, 800); 
+						
+					},
+				
+					error:function(xhr, ajaxOptions, thrownError){
+						alert(xhr.status);
+						alert(thrownError);
+					}
+				});
+			}
+		});
+	
+	});
+
+		
+		
+		
+		
+	
+	
+	//==============GET data from database===============
+	function fetch_data()  
+	{  
+		 $.ajax({  
+			  url:"msg-board",  
+			  type:"GET",  
+			  success:function(data){  
+				   $('#messageBoard').html(data);  
+			  }  
+		 });  
+	}  
+	fetch_data();  
+	
+	
+	
+	
+});
+</script>
+</body>
+</html>

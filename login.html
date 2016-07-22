@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fight Against Drugs</title>
+    
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/drugs.css" />
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/function.js"></script>
+
+    <!-- Jquery form validation -->
+	<script src="js/jquery.validate.min.js"></script>
+    
+    
+    </head> 
+<body> 
+<div data-role="page" id="form">
+	<div class="header">
+        <a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a>
+		<h1>Login</h1>
+	</div>
+    
+	<div data-role="content" style="min-height:40em;">	
+		<form name="loginform" id="loginform" enctype="multipart/form-data">
+    
+            <h4 class="formitem"><span class="required">*</span> Username <label for="username" generated="true" class="error nomargin"></label></h4>
+            <input type="text" id="username" name="username" required />
+            <h4 class="formitem"><span class="required">*</span> Password <label for="password" generated="true" class="error nomargin"></label></h4>
+            <input type="password" id="password" name="password" required />
+            
+            <button id="login" class="btn submit" type="submit" value="Submit Post">Login</button>
+            <a id="reg" class="btn register" href="registration" rel="external">Register</a>
+		</form> 
+        
+        <div class="footer">
+            <h4>&copy; Fight Against Drugs</h4>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+	//==============GET===============
+	$("#login").on('click',function() {
+		var username=$("#username").val();
+		var password=$("#password").val();
+
+		// form validation
+		$("#loginform").validate({
+			submitHandler : function () {
+				// if validate success
+
+                $.ajax({
+                    url:"user-login",
+                    type:"GET",
+                    dataType:"json",
+                    data:{type:"userlogin",username:username, password:password},
+					success : function (data) {
+						// redirect to home if restration success
+						window.location = "home";
+						alert("Login Successful");
+					},
+                    error: function(err){
+						window.location = "login";
+                        alert("Wrong Username or Password");
+                    }
+                });
+		
+			}
+		});
+
+	   
+	});
+
+
+});
+</script>
+
+</body>
+</html>
