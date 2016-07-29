@@ -1,22 +1,25 @@
 <?php
-$hostname = "127.0.0.1";
-$username = "root";
-$password = "";
+$hostname = "localhost";
+$username = "simpiratio_305";
+$password = "Lo24768";
 $connection = mysql_connect($hostname, $username, $password)
 or die("Could not open connection to database");
 
-mysql_select_db("305cde", $connection)
+mysql_select_db("simpiratio_305", $connection)
 or die("Could not select database");
-//$result = mysql_query("select * from personal where login='test'");
 
 
 $method = $_SERVER['REQUEST_METHOD'];
-echo $method;
+		$sth = mysql_query("SELECT * FROM newpost"); 
+		$rows = array();
+		while($r = mysql_fetch_assoc($sth)) {
+			$rows[] = $r;
+		}
+		print json_encode($rows);
 
 
 switch ($method){
 case 'POST':
-	//echo "Here is POST";
 	$username=$_POST['username'];
 	$subject=$_POST['subject'];
 	$date=$_POST['date'];
@@ -44,7 +47,7 @@ case 'POST':
  
  
 case 'PUT':
-
+	// Update database
     parse_str(file_get_contents("php://input"),$post_vars);
    
 	$username=$post_vars['username'];
@@ -70,7 +73,7 @@ case 'PUT':
 
 
 case 'DELETE':
-
+	// Delete from database
     parse_str(file_get_contents("php://input"),$post_vars);
  
 	$username=$post_vars['username'];
@@ -93,9 +96,6 @@ case 'DELETE':
 
  
 
-default:
-    rest_error($request); 
-    break;
 
 }
 ?>

@@ -41,9 +41,10 @@
     <a href="#addnew" class="btn add" data-ajax="false">+ New Message</a>
     <a href="edit" class="btn edit" data-ajax="false">Edit Message</a>
     
+    <!-- Use Jquery get html data into this div -->
     <div id="messageBoard"></div>
 
-        <a name="addnew"></a>
+    <a name="addnew"></a>
     <h2>Add New Message</h2>
 		<form name="contactform" id="contactform" enctype="multipart/form-data">
         
@@ -111,10 +112,6 @@ $(document).ready(function() {
 	});
 
 		
-		
-		
-		
-	
 	
 	//==============GET data from database===============
 	function fetch_data()  
@@ -128,8 +125,6 @@ $(document).ready(function() {
 		 });  
 	}  
 	fetch_data();  
-	
-	
 	
 	
 });

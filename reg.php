@@ -1,11 +1,11 @@
 <?php
-$hostname = "127.0.0.1";
-$username = "root";
-$password = "";
+$hostname = "localhost";
+$username = "simpiratio_305";
+$password = "Lo24768";
 $connection = mysql_connect($hostname, $username, $password)
 or die("Could not open connection to database");
 
-mysql_select_db("305cde", $connection)
+mysql_select_db("simpiratio_305", $connection)
 or die("Could not select database");
 
 
@@ -47,7 +47,8 @@ or die("Could not select database");
 	
 	}
 	else{
-	
+		
+		//echo json
 		$sth = mysql_query("SELECT * FROM testlogin"); 
 		$rows = array();
 		while($r = mysql_fetch_assoc($sth)) {

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fight Against Drugs</title>
     
-    
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
     <!-- Google Web Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
@@ -33,7 +32,7 @@
 		<h1>Fight Against Drugs</h1>
         <a href="login" class="btn-login" rel="external">Login</a>
 	</div>
-    
+    <!-- Home Slider -->
     <div class="flexslider" style="width:100%">
         <ul class="slides">
             <li><img src="img/drugs.jpg" alt="" /></li>
@@ -60,45 +59,6 @@
 
 
 <script>
-$(document).on("pageinit","#form", function() {
-
-	//==============GET===============
-	$("#login").on('click',function() {
-		var username=$("#username").val();
-		var password=$("#password").val();
-
-		// form validation
-		$("#loginform").validate({
-			submitHandler : function () {
-				// if validate success
-
-                $.ajax({
-                    url:"user-login",
-                    type:"GET",
-                    dataType:"json",
-                    data:{type:"userlogin",username:username, password:password},
-					success : function (data) {
-						// redirect to home if restration success
-						window.location = "home";
-						alert("Login Successful");
-					},
-                    error: function(err){
-						window.location = "login";
-                        alert("Wrong Username or Password");
-                    }
-                });
-		
-			}
-		});
-
-	   
-	});
-
-
-	   
-});
-
-
 
 	// init Home Slider
 	$(window).load(function() {

@@ -28,16 +28,14 @@
 
 <div data-role="page" id="about" class="site-wrap">
 	<div class="header">
-        <!--a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a-->
 		<h1>About Drug Abuse</h1>
         <a href="login" class="btn-login" rel="external">Login</a>
 
 	</div>
-	<div data-role="content">	
-
+	<div data-role="content">
+    
+		<!-- Use Jquery to append html into this div -->
 		<div id="aboutcontent">
-        
-        
         </div>
 
         <a href="javascript:void(0)" id="back-top">Top</a>
@@ -63,7 +61,7 @@ $(document).ready(function() {
 				var id = row[0];
 				var title = row[1];
 				var paragraph = row[2];
-				// append json data into a #div
+				// append json data into a #aboutcontent
 				$('#aboutcontent').append("<h2>"+title+"</h2>")
 								  .append("<p>"+paragraph+"</p>");
 			} 

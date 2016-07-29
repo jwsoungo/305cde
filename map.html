@@ -32,17 +32,18 @@
 	</div>
 	<div data-role="content" id="map" style="min-height:37.5em">	
     
-		<!-- Google Map-->
+		<!-- Google Map API -->
 		<script>
         function initMap() {
           var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
+			// Set center of the map when page load
             center: {lat: 22.319569, lng: 114.169072}, 
           });
         
           setMarkers(map);
         }
-        // Set Locations
+        // Set Locations coordinates and info
         var locations = [
           ['<h3>Mong Kok</h3>3/F, Public Health Laboratory Centre, 382 Nam Cheong Street, Kowloon', 22.339494, 114.166352, 3],
           ['<h3>Sham Shui Po</h3>Rm 11-16 Nam Yiu House, Nam Shan Estate, Shamshuipo, Kowloon', 22.334131, 114.170651, 2],
@@ -89,6 +90,7 @@
         }
         
         </script>
+        <!-- Google Map KEY -->
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvNQwMANskj3mcn3qIojc4WHBsqde_bNE&signed_in=true&callback=initMap"></script>
 

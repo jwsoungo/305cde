@@ -23,9 +23,16 @@
     
     </head> 
 <body> 
-<div data-role="page" id="form">
+
+
+<!-- Call Menu -->
+<div id="nav"></div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+
+<div data-role="page" id="form" class="site-wrap">
 	<div class="header">
-        <a role="button" href="javascript:void(0);" class="ui-btn ui-corner-all ui-shadow ui-btn-left ui-toolbar-back-btn ui-icon-carat-l ui-btn-icon-left" data-rel="back">Back</a>
 		<h1>Login</h1>
 	</div>
     
@@ -66,7 +73,7 @@ $(document).ready(function(){
                     dataType:"json",
                     data:{type:"userlogin",username:username, password:password},
 					success : function (data) {
-						// redirect to home if restration success
+						// redirect to home if login success
 						window.location = "home";
 						alert("Login Successful");
 					},
