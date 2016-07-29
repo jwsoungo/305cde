@@ -1,0 +1,21 @@
+<Limit GET POST PUT DELETE>
+Allow from all
+</Limit>
+
+RewriteEngine on
+RewriteRule ^/?home$  index.html
+RewriteRule ^/?about$  about.html
+RewriteRule ^/?faq$  faq.html
+RewriteRule ^/?media$  media.html
+RewriteRule ^/?message-board$  message.html
+RewriteRule ^/?counselling-centres$  map.html
+RewriteRule ^/?registration$  register.html
+RewriteRule ^/?login$  login.html
+RewriteRule ^/?edit$  edit.html
+
+RewriteRule ^/?msg-board$  newpost.php
+RewriteRule ^/?msg-edit$  msg.php
+
+RewriteRule ^/?user-reg$  reg.php
+RewriteRule ^/?user-login$  login.php
+RewriteRule ^/?get-about$  about.php
