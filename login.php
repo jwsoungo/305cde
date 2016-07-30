@@ -1,11 +1,11 @@
 <?php
-$hostname = "localhost";
-$username = "simpiratio_305";
-$password = "Lo24768";
+$hostname = "127.0.0.1";
+$username = "root";
+$password = "";
 $connection = mysql_connect($hostname, $username, $password)
 or die("Could not open connection to database");
 
-mysql_select_db("simpiratio_305", $connection)
+mysql_select_db("305cde", $connection)
 or die("Could not select database");
 
 	if(isset($_GET['type']))
@@ -17,12 +17,13 @@ or die("Could not select database");
 			$username=$_GET['username'];
 			$password=$_GET['password'];
 			
+			// Check Username and Password
 			$checkid=mysql_query("SELECT * from testlogin WHERE username='$username' and password='$password'") or die("Could not issue MySQL query");
 			
 			$records = mysql_num_rows($checkid);
 			
 			if($records>0){
-				
+				// Login Success
 				$res["result"] = true;
 				$res["alert"] = "Login Successful";
 			}else{
@@ -44,7 +45,7 @@ or die("Could not select database");
 		}
 		print json_encode($rows);
 	
-	
+		// Reture Error
 		$res["result"] = false;
 		$res["alert"] = "Invalid format";
 		

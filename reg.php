@@ -1,11 +1,11 @@
 <?php
-$hostname = "localhost";
-$username = "simpiratio_305";
-$password = "Lo24768";
+$hostname = "127.0.0.1";
+$username = "root";
+$password = "";
 $connection = mysql_connect($hostname, $username, $password)
 or die("Could not open connection to database");
 
-mysql_select_db("simpiratio_305", $connection)
+mysql_select_db("305cde", $connection)
 or die("Could not select database");
 
 
