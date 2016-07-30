@@ -9,52 +9,59 @@ mysql_select_db("simpiratio_305", $connection)
 or die("Could not select database");
 
 
+// Switch POST, PUT, DELETE method
 $method = $_SERVER['REQUEST_METHOD'];
-		$sth = mysql_query("SELECT * FROM newpost"); 
-		$rows = array();
-		while($r = mysql_fetch_assoc($sth)) {
-			$rows[] = $r;
-		}
-		print json_encode($rows);
-
-
 switch ($method){
-case 'POST':
-	$username=$_POST['username'];
-	$subject=$_POST['subject'];
-	$date=$_POST['date'];
-	$email=$_POST['email'];
-	$message=$_POST['message'];
 
-	$checkid=mysql_query("SELECT * from newpost WHERE email='$email'") or die("Could not issue MySQL query");
+
+case 'POST':
+	// Add New Post into Database
+	if(isset($_POST['type']))
+	{
+		if($_POST['type'] =="postmsg"){
+			
+			$username=$_POST['username'];
+			$subject=$_POST['subject'];
+			$date=$_POST['date'];
+			$email=$_POST['email'];
+			$message=$_POST['message'];
+			
+			// Check if the Username and Email are registered
+			$checkid=mysql_query("SELECT * from testlogin WHERE username='$username' and email='$email'") or die("Could not issue MySQL query");
+			$records = mysql_num_rows($checkid);
+			
+			// If Username and Email are correct, add New Post into database
+			if($records>0){
+				$sqlstring="insert into newpost (username,subject,date,email,message) values ('$username', '$subject', '$date', '$email', '$message')";
+				mysql_query($sqlstring);
+				// Success
+				$res["result"] = true;
+				$res["alert"] = "This message has been posted successfully";
+			}else{
+				// Reture Error Message if Wrong Username or Email
+				return;
+				$res["result"] = false;
+				$res["alert"] = "Invaild Username or Email";
+				
+			}
+			
+		}
 	
-	$records = mysql_num_rows($checkid);
-	
-	if($records>0){
-		
-		echo "Duplicate";
-		
-	}else{
-		
-		$sqlstring="insert into newpost (username,subject,date,email,message) values ('$username', '$subject', '$date', '$email', '$message')";
-		
-		mysql_query($sqlstring);
-		
 	}
+	echo json_encode($res);
 	break;
 	
+//----------------------------------------------------
 	
- 
- 
 case 'PUT':
-	// Update database
+	// Update Message Board Subject and Content
     parse_str(file_get_contents("php://input"),$post_vars);
    
 	$username=$post_vars['username'];
 	$email=$post_vars['email'];
 	$newsubject=$post_vars['newsubject'];
 	$newmessage=$post_vars['newmessage'];
-
+	
 	$checkid=mysql_query("SELECT * from newpost WHERE username='$username' and email='$email'") or die("Could not issue MySQL query");
 
 	$records = mysql_num_rows($checkid);
@@ -70,8 +77,12 @@ case 'PUT':
 	}
 
     break;
-
-
+			
+	
+	
+//----------------------------------------------------
+	
+	
 case 'DELETE':
 	// Delete from database
     parse_str(file_get_contents("php://input"),$post_vars);
@@ -94,8 +105,7 @@ case 'DELETE':
 
     break;
 
- 
-
-
+	
+	
 }
 ?>

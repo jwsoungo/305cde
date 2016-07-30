@@ -37,6 +37,7 @@
 	<div data-role="content" style="min-height:40em;">	
     
     <h2>Welcome</h2>
+    <p>You have to register in order to add a New Message.</p>
     
     <a href="#addnew" class="btn add" data-ajax="false">+ New Message</a>
     <a href="edit" class="btn edit" data-ajax="false">Edit Message</a>
@@ -83,7 +84,7 @@ $(document).ready(function() {
 		var email=$("#email").val();
 		var message=$("#message").val();
 		
-		var myData = 'username='+username+'&subject='+subject+'&date='+date+'&email='+email+'&message='+message;
+		//var myData = 'username='+username+'&subject='+subject+'&date='+date+'&email='+email+'&message='+message;
 	
 		$("#contactform").validate({
 			submitHandler : function () {
@@ -91,19 +92,19 @@ $(document).ready(function() {
 				$.ajax({
 					url:'msg-edit',
 					type:"POST",
-					dataType : 'text',
-					data:myData,
+					dataType : 'JSON',
+					data:{type:"postmsg", username:username, subject:subject, date:date, email:email, message:message},
 					success : function (data) {
 						alert("This message has been posted successfully");
 						setTimeout(function(){
 							location.reload(); // then reload the page
-						}, 800); 
+						}, 500); 
 						
 					},
 				
-					error:function(xhr, ajaxOptions, thrownError){
-						alert(xhr.status);
-						alert(thrownError);
+					error:function(err){
+						window.location = "message-board";
+						alert("Invaild Username or Email");
 					}
 				});
 			}
